@@ -12,7 +12,7 @@ The primary functionality of the app is to display weather information based on 
 
 Clone the repository to your local machine:
 
-    git clone https://github.com/yana-shick/yana-shick-29.11.2023.git
+    git clone https://github.com/yana-shick/weatherapp.git
 
 Navigate to the project directory:
 

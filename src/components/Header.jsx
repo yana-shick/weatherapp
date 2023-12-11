@@ -39,7 +39,7 @@ export const Header = (props) => {
 				className="bg-secondary pb-1 rounded-3 my-navbar"
 				data-bs-theme={theme}
 			>
-				<Navbar.Brand href="/">Herolo Weather Task</Navbar.Brand>
+				<Navbar.Brand href="/">Weather App</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav">
 					<FontAwesomeIcon icon={faEllipsisVertical} />
 				</Navbar.Toggle>
