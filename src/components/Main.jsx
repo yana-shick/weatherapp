@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -19,27 +18,31 @@ import { Forecast } from "./Forecast";
 
 export const Main = () => {
 	const storeData = useSelector((state) => state.reducerActive);
-	// console.log(`main componenta: store: `, storeData);
 	const weatherCity = storeData.weather?.city;
 	const weatherUnit = storeData.weather?.unit;
 	let weatherTempertureValue = "";
-	if (weatherUnit === "C") {
-		weatherTempertureValue = storeData.weather?.temperature?.value;
-	} else {
-		weatherTempertureValue = (
-			storeData.weather?.temperature?.value * 1.8 +
-			32
-		).toFixed(1);
+	try {
+		if (weatherUnit === "C") {
+			weatherTempertureValue = storeData.weather?.temperature?.value;
+		} else {
+			weatherTempertureValue = (
+				storeData.weather?.temperature?.value * 1.8 +
+				32
+			).toFixed(1);
+		}
+	} catch (err) {
+		// console.log(err);
 	}
-	console.log(`temperaturs:`, weatherTempertureValue, weatherUnit);
 
 	const weatherWeatherText = storeData.weather?.weatherText;
 	const weatherCityKey = storeData.weather?.citykey;
 
 	const weatherIconIndex = storeData.weather?.weatherIcon;
-	let weatherIconIndexCorrect;
+	let weatherIconIndexCorrect = "";
 	if (weatherIconIndex < 10) {
 		weatherIconIndexCorrect = `0${weatherIconIndex}`;
+	} else {
+		weatherIconIndexCorrect = weatherIconIndex;
 	}
 	const icon = weatherIconIndex
 		? `https://developer.accuweather.com/sites/default/files/${weatherIconIndexCorrect}-s.png`
@@ -53,10 +56,7 @@ export const Main = () => {
 			store.dispatch(deleteFavorite(weatherCityKey));
 			store.dispatch(toggleIsFavorite(!isFavorite));
 		} else {
-			document.cookie = `${weatherCityKey}=${weatherCity}`;
-			// console.log(
-			// 	`favorite_${weatherCityKey}=${JSON.stringify(storeData.weather)}`
-			// );
+			document.cookie = `${weatherCityKey}=${weatherCity}`; //this is mistake- no need in this
 
 			document.cookie = `favorite_${weatherCityKey}=${JSON.stringify(
 				storeData.weather
