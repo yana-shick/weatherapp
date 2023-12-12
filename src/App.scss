@@ -42,7 +42,10 @@ $text-gray: $gray-300;
 	right: 50%;
 	transform: translate(50%);
 }
-
+// for the forecat: to fit text in one row
+.my-forecat {
+	min-width: 120px;
+}
 // ---icons---
 
 .favoriteColor {

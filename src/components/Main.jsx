@@ -18,8 +18,8 @@ import { Forecast } from "./Forecast";
 
 export const Main = () => {
 	const storeData = useSelector((state) => state.reducerActive);
-	const weatherCity = storeData.weather?.city;
-	const weatherUnit = storeData.weather?.unit;
+	const weatherCity = storeData?.weather?.city; //i added ? after storeData
+	const weatherUnit = storeData?.weather?.unit; //i added ? after storeData
 	let weatherTempertureValue = "";
 	try {
 		if (weatherUnit === "C") {

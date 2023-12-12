@@ -17,7 +17,7 @@ import {
 
 export const Header = (props) => {
 	const storeData = useSelector((state) => state.reducerActive);
-	const weatherUnit = storeData.weather?.unit;
+	const weatherUnit = storeData?.weather?.unit; //i added ? before storeData
 	const toggleUnit = () => {
 		try {
 			store.dispatch(toggleUnitAction(weatherUnit === "C" ? "F" : "C"));
@@ -66,7 +66,7 @@ export const Header = (props) => {
 								toggleUnit();
 							}}
 						>
-							{weatherUnit}
+							{weatherUnit === "C" ? "F" : "C"}
 						</Nav.Link>
 						<Nav.Link
 							onClick={() => {
