@@ -23,12 +23,11 @@ export const Main = () => {
 	let weatherTempertureValue = "";
 	try {
 		if (weatherUnit === "C") {
-			weatherTempertureValue = storeData.weather?.temperature?.value;
-		} else {
-			weatherTempertureValue = (
-				storeData.weather?.temperature?.value * 1.8 +
-				32
-			).toFixed(1);
+			weatherTempertureValue = storeData?.weather?.temperature?.value; //i added ? after storeData
+		} else if (weatherUnit === "F") {
+			weatherTempertureValue =
+			(storeData?.weather?.temperature?.value * 1.8 + 32) //i added ? after storeData
+			.toFixed(1); //i added ? after storeData
 		}
 	} catch (err) {
 		// console.log(err);
